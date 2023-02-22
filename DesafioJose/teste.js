@@ -1,5 +1,5 @@
 import { pokemons } from "./data.js";
-import { tradutor } from "./tradutor.js";
+import { translate } from "./translate.js";
 
 // let pesquisa = (nome) =>
 //   pokemons.map((pokemon) => {
@@ -8,20 +8,20 @@ import { tradutor } from "./tradutor.js";
 //     }
 //   });
 
-let pesquisa = (nome) =>
+let searchPokemon = (name) =>
   pokemons.filter((pokemon) => {
-    if (pokemon.name == nome) {
+    if (pokemon.name == name) {
       return pokemon;
     }
   });
-let lista = (tipo) =>
+let listByType = (type) =>
   pokemons.filter((pokemon) => {
-    if (pokemon.type.includes(tipo)) {
+    if (pokemon.type.includes(type)) {
       return pokemon;
     }
   });
 
-const tipos = pokemons.reduce((acc, cur) => {
+const listAllTypes = pokemons.reduce((acc, cur) => {
   cur.type.map((type) => {
     if (!acc.includes(type)) {
       acc.push(type);
@@ -30,19 +30,19 @@ const tipos = pokemons.reduce((acc, cur) => {
   return acc;
 }, []);
 
-const traduz = pokemons.map((pokemon) => {
+const translateTypes = pokemons.map((pokemon) => {
   return {
     ...pokemon,
     type: pokemon.type.map((type) => {
-      return tradutor[type];
+      return translate[type];
     }),
   };
 });
 
-console.log(pesquisa("ivysaur"));
+console.log(searchPokemon("ivysaur"));
 
-console.log(lista("grass"));
+console.log(listByType("grass"));
 
-console.log(tipos); //Usei pra listar todos os tipos do data.js
+console.log(listAllTypes); //Usei pra listar todos os tipos do data.js
 
-console.log(traduz);
+console.log(translateTypes);
