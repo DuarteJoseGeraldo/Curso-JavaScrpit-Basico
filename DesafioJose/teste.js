@@ -31,18 +31,14 @@ const listAllTypes = pokemons.reduce((acc, cur) => {
 }, []);
 
 const translateTypes = pokemons.map((pokemon) => {
-  return {
-    ...pokemon,
-    type: pokemon.type.map((type) => {
-      return translate[type];
-    }),
-  };
+  pokemon.type = pokemon.type.map((type) => translate[type]);
+  return pokemon;
 });
 
 console.log(searchPokemon("ivysaur"));
 
 console.log(listByType("grass"));
 
-console.log(listAllTypes); //Usei pra listar todos os tipos do data.js
+console.log(listAllTypes); //Usei pra listar todos os tipos do data.js pra traduzir depois
 
 console.log(translateTypes);
