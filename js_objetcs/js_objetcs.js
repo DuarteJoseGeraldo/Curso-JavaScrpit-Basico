@@ -58,6 +58,6 @@ showAllKeys(programming);
 
 //////////////////////-7-//////////////////////
 
-const showAllData = (object) => console.log(object);
+const showAllData = (object) => console.log(Object.values(object));
 
 showAllData(programming);
